@@ -1,0 +1,18 @@
+name: 'webhook-notifications'
+description: 'webhook-notifications'
+branding:
+  icon: 'check-square'
+  color: 'orange'
+inputs:
+  discord-webhook:
+    description: >-
+      Name of the lambda that is going to be deployed. If it's not provided defaults to the repo name converted to camelCase.
+    required: true
+outputs:
+  lambda-config:
+    description: 'The current lambda config in JSON format'
+  layer-config:
+    description: 'The current default layer config in JSON format'
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
