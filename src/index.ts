@@ -13,7 +13,7 @@ export const run = async () => {
   core.info(`URL: ${remainingUrl}`);
   let res;
   try {
-    res = await axios.post(discordWebhook, 'hola');
+    res = await axios.post(discordWebhook, 'hola mundo!');
     core.info(res.statusText);
   } catch (err: any) {
     throw new Error(err.message);
