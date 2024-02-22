@@ -24740,6 +24740,7 @@ const run = async () => {
     const discordWebhook = core.getInput('discord-webhook', { required: true });
     if (!discordWebhook)
         throw new Error("discordWebhook doesn't exist");
+    //testing
     core.info(`setting output LATEST_LAYER_VERSION: ${JSON.stringify(discordWebhook, null)} *** ${discordWebhook}`);
 };
 exports.run = run;
