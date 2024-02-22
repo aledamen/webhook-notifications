@@ -28248,9 +28248,12 @@ const run = async () => {
     const remainingUrl = webhookParts[1];
     core.info(`Protocol: ${protocol}`);
     core.info(`URL: ${remainingUrl}`);
+    const msg = {
+        content: 'hello world!',
+    };
     let res;
     try {
-        res = await axios_1.default.post(discordWebhook, 'hola');
+        res = await axios_1.default.post(discordWebhook, msg);
         core.info(res.statusText);
     }
     catch (err) {
