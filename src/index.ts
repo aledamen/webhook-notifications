@@ -11,13 +11,13 @@ export const run = async () => {
 
   core.info(`Protocol: ${protocol}`);
   core.info(`URL: ${remainingUrl}`);
-  // let res;
-  // try {
-  //   res = await axios.post(discordWebhook, 'hola');
-  //   core.info(res.statusText);
-  // } catch (err: any) {
-  //   throw new Error(err.message);
-  // }
+  let res;
+  try {
+    res = await axios.post(discordWebhook, 'hola');
+    core.info(res.statusText);
+  } catch (err: any) {
+    throw new Error(err.message);
+  }
 };
 
 export default run;
