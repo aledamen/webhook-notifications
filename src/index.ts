@@ -68,13 +68,14 @@ export const run = async () => {
   };
 
   try {
-    await fetch(discordWebhook, {
+    const res = await fetch(discordWebhook, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(msg1),
     });
+    core.info(`Success ${res.status}`);
   } catch (err: any) {
     core.info(`Error ---> ${err}`);
     core.info(`Error message ---> ${err.message}`);
