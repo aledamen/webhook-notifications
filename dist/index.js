@@ -29042,7 +29042,7 @@ const run = async () => {
             },
             body: JSON.stringify(msg1),
         });
-        core.info(`Success ${res.status}`);
+        core.info(`Success ---> ${res}`);
     }
     catch (err) {
         core.info(`Error ---> ${err}`);
