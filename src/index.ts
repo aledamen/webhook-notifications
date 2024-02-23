@@ -68,9 +68,16 @@ export const run = async () => {
   };
 
   try {
-    await axios.post(discordWebhook, msg1);
+    await fetch(discordWebhook, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(msg1),
+    });
   } catch (err: any) {
-    core.info(`Error message ---> ${err}`);
+    core.info(`Error ---> ${err}`);
+    core.info(`Error message ---> ${err.message}`);
     throw new Error(err.message);
   }
 };
