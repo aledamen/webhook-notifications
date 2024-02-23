@@ -44,6 +44,7 @@ export const run = async () => {
   const msg1 = {
     username: messageUsername || `${repoName} ${branchName}`,
     avatar_url: 'https://i.imgur.com/4M34hi2.png',
+    content: 'i am a content',
     embeds: [
       {
         author: {
