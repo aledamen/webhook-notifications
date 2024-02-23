@@ -10,11 +10,11 @@ export const run = async () => {
   const discordWebhook = core.getInput('discord-webhook', { required: true });
   if (!discordWebhook) throw new Error("discordWebhook doesn't exist");
 
-  const messageColor = core.getInput('message-color', { required: true });
-  const messageIcon = core.getInput('message-icon', { required: true });
-  const messageUsername = core.getInput('message-username', { required: true });
-  const messageTitle = core.getInput('message-title', { required: true });
-  const messageText = core.getInput('message-text', { required: true });
+  const messageColor = core.getInput('message-color', { required: false });
+  const messageIcon = core.getInput('message-icon', { required: false });
+  const messageUsername = core.getInput('message-username', { required: false });
+  const messageTitle = core.getInput('message-title', { required: false });
+  const messageText = core.getInput('message-text', { required: false });
 
   const repoName = payload.repository?.name;
   core.info(`setting REPO_NAME: ${repoName}`);
