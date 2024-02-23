@@ -75,7 +75,8 @@ export const run = async () => {
       },
       body: JSON.stringify(msg1),
     });
-    core.info(`Success ---> ${res.json()}`);
+    const responseBody = await res.json();
+    core.info(`Success ---> ${responseBody}`);
   } catch (err: any) {
     core.info(`Error ---> ${err}`);
     core.info(`Error message ---> ${err.message}`);
