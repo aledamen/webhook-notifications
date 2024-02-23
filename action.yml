@@ -6,8 +6,28 @@ branding:
 inputs:
   discord-webhook:
     description: >-
-      Name of the lambda that is going to be deployed. If it's not provided defaults to the repo name converted to camelCase.
+      Specific discord-webhook URL to send the notification.
     required: true
+  message-color:
+    description: >-
+      Message's color.
+    required: false
+  message-icon:
+    description: >-
+      Message's icon.
+    required: false
+  message-username: 
+      description: >-
+      Message's username.
+    required: false
+  message-title: 
+      description: >-
+      Message's title.
+    required: false
+  message-text: 
+      description: >-
+      Message's text.
+    required: false
 runs:
   using: 'node20'
   main: 'dist/index.js'
