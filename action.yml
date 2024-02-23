@@ -1,33 +1,34 @@
-name: 'webhook-notifications'
-description: 'webhook-notifications'
+name: webhook-notifications
+description: webhook-notifications
 branding:
-  icon: 'check-square'
-  color: 'orange'
+  icon: check-square
+  color: orange
 inputs:
   discord-webhook:
-    description: >-
+    description: >
       Specific discord-webhook URL to send the notification.
     required: true
   message-color:
-    description: >-
+    description: >
       Message's color.
     required: false
   message-icon:
-    description: >-
+    description: >
       Message's icon.
     required: false
-  message-username: 
-      description: >-
+  message-username:
+    description: >
       Message's username.
     required: false
-  message-title: 
-      description: >-
+  message-title:
+    description: >
       Message's title.
     required: false
-  message-text: 
-      description: >-
+  message-text:
+    description: >
       Message's text.
     required: false
 runs:
-  using: 'node20'
-  main: 'dist/index.js'
+  using: node20
+  main: dist/index.js
+
