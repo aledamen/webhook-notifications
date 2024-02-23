@@ -70,7 +70,7 @@ export const run = async () => {
   try {
     await axios.post(discordWebhook, msg1);
   } catch (err: any) {
-    core.info(`Error message ---> ${err.message}`);
+    core.info(`Error message ---> ${err}`);
     throw new Error(err.message);
   }
 };

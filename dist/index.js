@@ -32538,7 +32538,7 @@ const run = async () => {
         await axios_1.default.post(discordWebhook, msg1);
     }
     catch (err) {
-        core.info(`Error message ---> ${err.message}`);
+        core.info(`Error message ---> ${err}`);
         throw new Error(err.message);
     }
 };
