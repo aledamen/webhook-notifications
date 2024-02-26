@@ -29043,7 +29043,7 @@ const run = async () => {
             body: JSON.stringify(msg1),
         });
         const responseBody = await res.json();
-        core.info(`Success ---> ${responseBody}`);
+        core.info(`Success ---> ${JSON.stringify(responseBody)}`);
     }
     catch (err) {
         core.info(`Error ---> ${err}`);
