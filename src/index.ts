@@ -37,6 +37,11 @@ export const run = async () => {
   const stage = (branchName.toUpperCase() === 'MAIN') ? 'PROD' : branchName.toUpperCase();
   core.info(`setting STAGE: ${stage}`);
 
+  core.info(`eventName --> ${context.eventName}`);
+  core.info(`SHA --> ${context.sha}`);
+  core.info(`workflow --> ${context.workflow}`);
+  core.info(`action --> ${context.action}`);
+
   let actorInfo;
   try {
     actorInfo = await axios.get(`https://api.github.com/users/${context.actor}`);

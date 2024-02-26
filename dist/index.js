@@ -32540,6 +32540,10 @@ const run = async () => {
     core.info(`setting BRANCH_NAME: ${branchName}`);
     const stage = (branchName.toUpperCase() === 'MAIN') ? 'PROD' : branchName.toUpperCase();
     core.info(`setting STAGE: ${stage}`);
+    core.info(`eventName --> ${context.eventName}`);
+    core.info(`SHA --> ${context.sha}`);
+    core.info(`workflow --> ${context.workflow}`);
+    core.info(`action --> ${context.action}`);
     let actorInfo;
     try {
         actorInfo = await axios_1.default.get(`https://api.github.com/users/${context.actor}`);
