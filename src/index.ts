@@ -36,10 +36,11 @@ export const run = async () => {
   let actorInfo;
   try {
     actorInfo = await axios.get(`https://api.github.com/users/${context.actor}`);
-    core.info(`Success ---> ${actorInfo.data}`);
+    core.info(`Success Actor ---> ${actorInfo.data.json()}`);
+    core.info(`Success Actor ---> ${actorInfo.data.avatar_url}`);
   } catch (err: any) {
     const errorMsg = handleError(err);
-    core.info(`Error ---> ${errorMsg}`);
+    core.info(`Error Actor ---> ${errorMsg}`);
     throw new Error(errorMsg);
   }
 
@@ -86,10 +87,10 @@ export const run = async () => {
 
   try {
     const res = await axios.post(discordWebhook, msg1);
-    core.info(`Success ---> ${res}`);
+    core.info(`Success Message ---> ${res.data.data}`);
   } catch (err: any) {
     const errorMsg = handleError(err);
-    core.info(`Error ---> ${errorMsg}`);
+    core.info(`Error Message ---> ${errorMsg}`);
     throw new Error(errorMsg);
   }
 };

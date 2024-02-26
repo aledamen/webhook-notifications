@@ -32523,11 +32523,12 @@ const run = async () => {
     let actorInfo;
     try {
         actorInfo = await axios_1.default.get(`https://api.github.com/users/${context.actor}`);
-        core.info(`Success ---> ${actorInfo.data}`);
+        core.info(`Success Actor ---> ${actorInfo.data.json()}`);
+        core.info(`Success Actor ---> ${actorInfo.data.avatar_url}`);
     }
     catch (err) {
         const errorMsg = (0, handleError_1.default)(err);
-        core.info(`Error ---> ${errorMsg}`);
+        core.info(`Error Actor ---> ${errorMsg}`);
         throw new Error(errorMsg);
     }
     if (!('commits' in payload)) {
@@ -32565,11 +32566,11 @@ const run = async () => {
     };
     try {
         const res = await axios_1.default.post(discordWebhook, msg1);
-        core.info(`Success ---> ${res}`);
+        core.info(`Success Message ---> ${res.data.data}`);
     }
     catch (err) {
         const errorMsg = (0, handleError_1.default)(err);
-        core.info(`Error ---> ${errorMsg}`);
+        core.info(`Error Message ---> ${errorMsg}`);
         throw new Error(errorMsg);
     }
 };
