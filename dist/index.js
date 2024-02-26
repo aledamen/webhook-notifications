@@ -32459,6 +32459,24 @@ exports["default"] = handleError;
 
 /***/ }),
 
+/***/ 9861:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const hexToRgb = (hex) => {
+    const hexWithoutNumeral = hex.replace(/^#/, '');
+    const r = parseInt(hexWithoutNumeral.substring(0, 2), 16);
+    const g = parseInt(hexWithoutNumeral.substring(2, 4), 16);
+    const b = parseInt(hexWithoutNumeral.substring(4, 6), 16);
+    return `${r}${g}${b}`;
+};
+exports["default"] = hexToRgb;
+
+
+/***/ }),
+
 /***/ 9011:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
@@ -32495,6 +32513,7 @@ exports.run = void 0;
 const core = __importStar(__nccwpck_require__(4385));
 const github = __importStar(__nccwpck_require__(4293));
 const axios_1 = __importDefault(__nccwpck_require__(5144));
+const hexToRgb_1 = __importDefault(__nccwpck_require__(9861));
 const handleError_1 = __importDefault(__nccwpck_require__(5498));
 const run = async () => {
     const { context } = github;
@@ -32539,6 +32558,7 @@ const run = async () => {
     const commitMessage = lastCommit.message;
     core.info(`setting COMMIT_MESSAGE: ${commitMessage}`);
     core.info(`setting SUCCESS_MESSAGE: The test, build and deploy succeeded! 🚀 Message: ${commitMessage}`);
+    core.info(`COLOR --> ${(0, hexToRgb_1.default)(messageColor)}`);
     const msg1 = {
         username: messageUsername || `${repoName} ${stage}`,
         avatar_url: messageIcon || 'https://avatars.githubusercontent.com/u/52255631?s=200&v=4',
