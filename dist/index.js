@@ -32439,7 +32439,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const axios_1 = __importDefault(__nccwpck_require__(5144));
 const handleError = (error) => {
-    // When Axios encounters an error during an HTTP request or response handling, it creates a specific Axios error object
     if (axios_1.default.isAxiosError(error)) {
         const apiError = error.response?.data;
         if (typeof apiError === 'string' && apiError.length > 0) {
@@ -32447,9 +32446,6 @@ const handleError = (error) => {
         }
         return apiError?.message || apiError?.error || error.message;
     }
-    // Network errors
-    // timeout errors
-    // CORS errors
     if (error instanceof Error) {
         return error.message;
     }
@@ -32459,24 +32455,6 @@ const handleError = (error) => {
     return 'Generic error message';
 };
 exports["default"] = handleError;
-
-
-/***/ }),
-
-/***/ 9861:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-const hexToRgb = (hex) => {
-    const hexWithoutNumeral = hex.replace(/^#/, '');
-    const r = parseInt(hexWithoutNumeral.substring(0, 2), 16);
-    const g = parseInt(hexWithoutNumeral.substring(2, 4), 16);
-    const b = parseInt(hexWithoutNumeral.substring(4, 6), 16);
-    return `${r}${g}${b}`;
-};
-exports["default"] = hexToRgb;
 
 
 /***/ }),
@@ -32517,7 +32495,6 @@ exports.run = void 0;
 const core = __importStar(__nccwpck_require__(4385));
 const github = __importStar(__nccwpck_require__(4293));
 const axios_1 = __importDefault(__nccwpck_require__(5144));
-const hexToRgb_1 = __importDefault(__nccwpck_require__(9861));
 const handleError_1 = __importDefault(__nccwpck_require__(5498));
 const run = async () => {
     const { context } = github;
@@ -32546,25 +32523,25 @@ const run = async () => {
     core.info(`setting COMMIT_MESSAGE: ${commitMessage}`);
     core.info(`setting SUCCESS_MESSAGE: The test, build and deploy succeeded! 🚀 Message: ${commitMessage}`);
     const msg1 = {
-        username: messageUsername || `${repoName} ${branchName}`,
+        username: 'a',
         avatar_url: 'https://i.imgur.com/4M34hi2.png',
         content: 'i am a content',
         embeds: [
             {
                 author: {
-                    name: context.actor,
-                    url: `https://github.com/${context.repo.owner}/${context.repo.repo}`,
-                    icon_url: messageIcon || 'https://i.imgur.com/R66g1Pe.jpg',
+                    name: 'a',
+                    url: 'https://github.com/',
+                    icon_url: 'https://i.imgur.com/R66g1Pe.jpg',
                 },
-                color: (0, hexToRgb_1.default)(messageColor) || 15258703,
+                color: 15258703,
                 fields: [
                     {
                         name: 'Actions URL',
-                        value: `[hyperlink](https://github.com/${context.repo.owner}/${context.repo.repo})`,
+                        value: '[hyperlink](https://github.com/',
                     },
                     {
-                        name: messageTitle || 'Your message title for deploy should be here',
-                        value: messageText || `The test, build and deploy succeeded! 🚀 Message: ${commitMessage}`,
+                        name: 'Your message title for deploy should be here',
+                        value: 'The test, build and deploy succeeded! 🚀 Message: ',
                     },
                 ],
             },

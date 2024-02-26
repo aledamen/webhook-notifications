@@ -43,25 +43,25 @@ export const run = async () => {
   core.info(`setting SUCCESS_MESSAGE: The test, build and deploy succeeded! 🚀 Message: ${commitMessage}`);
 
   const msg1 = {
-    username: messageUsername || `${repoName} ${branchName}`,
+    username: 'a',
     avatar_url: 'https://i.imgur.com/4M34hi2.png',
     content: 'i am a content',
     embeds: [
       {
         author: {
-          name: context.actor,
-          url: `https://github.com/${context.repo.owner}/${context.repo.repo}`,
-          icon_url: messageIcon || 'https://i.imgur.com/R66g1Pe.jpg',
+          name: 'a',
+          url: 'https://github.com/',
+          icon_url: 'https://i.imgur.com/R66g1Pe.jpg',
         },
-        color: hexToRgb(messageColor) || 15258703,
+        color: 15258703,
         fields: [
           {
             name: 'Actions URL',
-            value: `[hyperlink](https://github.com/${context.repo.owner}/${context.repo.repo})`,
+            value: '[hyperlink](https://github.com/',
           },
           {
-            name: messageTitle || 'Your message title for deploy should be here',
-            value: messageText || `The test, build and deploy succeeded! 🚀 Message: ${commitMessage}`,
+            name: 'Your message title for deploy should be here',
+            value: 'The test, build and deploy succeeded! 🚀 Message: ',
           },
         ],
       },
