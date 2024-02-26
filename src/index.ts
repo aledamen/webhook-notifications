@@ -59,10 +59,6 @@ export const run = async () => {
   const lastCommit = commits.shift();
   const commitMessage = lastCommit.message;
 
-  core.info(`setting COMMIT_MESSAGE: ${commitMessage}`);
-
-  core.info(`setting SUCCESS_MESSAGE: The test, build and deploy succeeded! 🚀 Message: ${commitMessage}`);
-
   const msg1 = {
     username: messageUsername || `${repoName} ${stage}`,
     avatar_url: messageIcon || 'https://avatars.githubusercontent.com/u/52255631?s=200&v=4',
@@ -81,8 +77,8 @@ export const run = async () => {
               || '[Workflows Name](https://github.com/)',
           },
           {
-            name: 'Your message title for deploy should be here',
-            value: 'The test, build and deploy succeeded! 🚀 Message: ',
+            name: messageBodyTitle || `${stage} Deploy`,
+            value: `${messageBodyText} ${commitMessage}`,
           },
         ],
       },
