@@ -12,10 +12,15 @@ export const run = async () => {
   if (!discordWebhook) throw new Error("discordWebhook doesn't exist");
 
   const messageColor = core.getInput('message-color', { required: false });
+  core.info(`message-color ${messageColor}`);
   const messageIcon = core.getInput('message-icon', { required: false });
+  core.info(`message-color ${messageIcon}`);
   const messageUsername = core.getInput('message-username', { required: false });
+  core.info(`message-color ${messageUsername}`);
   const messageTitle = core.getInput('message-title', { required: false });
+  core.info(`message-color ${messageTitle}`);
   const messageText = core.getInput('message-text', { required: false });
+  core.info(`message-color ${messageText}`);
 
   const repoName = payload.repository?.name;
   core.info(`setting REPO_NAME: ${repoName}`);
@@ -43,7 +48,7 @@ export const run = async () => {
   core.info(`setting SUCCESS_MESSAGE: The test, build and deploy succeeded! 🚀 Message: ${commitMessage}`);
 
   const msg1 = {
-    username: 'a',
+    username: messageUsername || `${repoName} ${branchName}`,
     avatar_url: 'https://i.imgur.com/4M34hi2.png',
     content: 'i am a content',
     embeds: [
