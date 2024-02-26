@@ -32541,6 +32541,10 @@ const run = async () => {
     catch (err) {
         core.info(`Error ---> ${err}`);
         core.info(`Error message ---> ${err.message}`);
+        core.info(`Error request ---> ${err.request}`);
+        core.info(`Error response ---> ${err.response}`);
+        core.info(`Error response.data ---> ${err.response.data}`);
+        core.info(`Error response.data.error ---> ${err.response.data.error}`);
         throw new Error(err.message);
     }
 };
