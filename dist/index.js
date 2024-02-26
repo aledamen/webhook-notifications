@@ -32499,6 +32499,7 @@ const handleError_1 = __importDefault(__nccwpck_require__(5498));
 const run = async () => {
     const { context } = github;
     const { payload } = context;
+    // GETTING INPUTS
     const discordWebhook = core.getInput('discord-webhook', { required: true });
     if (!discordWebhook)
         throw new Error("discordWebhook doesn't exist");
@@ -32512,6 +32513,7 @@ const run = async () => {
     core.info(`message-title ${messageTitle}`);
     const messageText = core.getInput('message-text', { required: false });
     core.info(`message-text ${messageText}`);
+    // SETTING VARIABLES TO SEND MESSAGE
     const repoName = payload.repository?.name;
     core.info(`setting REPO_NAME: ${repoName}`);
     const branchName = context.ref.includes('/') ? context.ref.split('/').pop() ?? '' : '';
@@ -32529,7 +32531,7 @@ const run = async () => {
     core.info(`setting SUCCESS_MESSAGE: The test, build and deploy succeeded! 🚀 Message: ${commitMessage}`);
     const msg1 = {
         username: messageUsername || `${repoName} ${stage}`,
-        avatar_url: 'https://i.imgur.com/4M34hi2.png',
+        avatar_url: messageIcon || payload.organization.avatar_url,
         embeds: [
             {
                 author: {

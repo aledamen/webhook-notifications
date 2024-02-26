@@ -8,6 +8,7 @@ export const run = async () => {
   const { context } = github;
   const { payload } = context;
 
+  // GETTING INPUTS
   const discordWebhook = core.getInput('discord-webhook', { required: true });
   if (!discordWebhook) throw new Error("discordWebhook doesn't exist");
 
@@ -22,6 +23,7 @@ export const run = async () => {
   const messageText = core.getInput('message-text', { required: false });
   core.info(`message-text ${messageText}`);
 
+  // SETTING VARIABLES TO SEND MESSAGE
   const repoName = payload.repository?.name;
   core.info(`setting REPO_NAME: ${repoName}`);
 
@@ -49,7 +51,7 @@ export const run = async () => {
 
   const msg1 = {
     username: messageUsername || `${repoName} ${stage}`,
-    avatar_url: 'https://i.imgur.com/4M34hi2.png',
+    avatar_url: messageIcon || payload.organization.avatar_url,
     embeds: [
       {
         author: {
