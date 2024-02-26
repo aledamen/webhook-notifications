@@ -32535,7 +32535,7 @@ const run = async () => {
         embeds: [
             {
                 author: {
-                    name: 'a',
+                    name: context.actor,
                     url: 'https://github.com/',
                     icon_url: 'https://i.imgur.com/R66g1Pe.jpg',
                 },
