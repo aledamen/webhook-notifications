@@ -36,7 +36,6 @@ export const run = async () => {
   let actorInfo;
   try {
     actorInfo = await axios.get(`https://api.github.com/users/${context.actor}`);
-    core.info(`Success Actor ---> ${actorInfo.data.json()}`);
     core.info(`Success Actor ---> ${actorInfo.data.avatar_url}`);
   } catch (err: any) {
     const errorMsg = handleError(err);

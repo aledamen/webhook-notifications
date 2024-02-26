@@ -32523,7 +32523,6 @@ const run = async () => {
     let actorInfo;
     try {
         actorInfo = await axios_1.default.get(`https://api.github.com/users/${context.actor}`);
-        core.info(`Success Actor ---> ${actorInfo.data.json()}`);
         core.info(`Success Actor ---> ${actorInfo.data.avatar_url}`);
     }
     catch (err) {
