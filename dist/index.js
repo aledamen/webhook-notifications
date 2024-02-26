@@ -32540,10 +32540,6 @@ const run = async () => {
     core.info(`setting BRANCH_NAME: ${branchName}`);
     const stage = (branchName.toUpperCase() === 'MAIN') ? 'PROD' : branchName.toUpperCase();
     core.info(`setting STAGE: ${stage}`);
-    core.info(`eventName --> ${context.eventName}`);
-    core.info(`SHA --> ${context.sha}`);
-    core.info(`workflow --> ${context.workflow}`);
-    core.info(`action --> ${context.action}`);
     let actorInfo;
     try {
         actorInfo = await axios_1.default.get(`https://api.github.com/users/${context.actor}`);
@@ -32577,7 +32573,8 @@ const run = async () => {
                 fields: [
                     {
                         name: messageActionTitle || 'Actions URL',
-                        value: '[hyperlink](https://github.com/)',
+                        value: `[${context.workflow}](https://github.com/EducacionIT/${repoName}/commit/${context.sha}/checks)`
+                            || '[Workflows Name](https://github.com/)',
                     },
                     {
                         name: 'Your message title for deploy should be here',
