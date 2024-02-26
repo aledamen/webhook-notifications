@@ -51,7 +51,7 @@ export const run = async () => {
 
   const msg1 = {
     username: messageUsername || `${repoName} ${stage}`,
-    avatar_url: messageIcon || payload.organization.avatar_url,
+    avatar_url: messageIcon || 'https://avatars.githubusercontent.com/u/52255631?s=200&v=4',
     embeds: [
       {
         author: {
