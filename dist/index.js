@@ -32505,13 +32505,13 @@ const run = async () => {
     const messageColor = core.getInput('message-color', { required: false });
     core.info(`message-color ${messageColor}`);
     const messageIcon = core.getInput('message-icon', { required: false });
-    core.info(`message-color ${messageIcon}`);
+    core.info(`message-icon ${messageIcon}`);
     const messageUsername = core.getInput('message-username', { required: false });
-    core.info(`message-color ${messageUsername}`);
+    core.info(`message-username ${messageUsername}`);
     const messageTitle = core.getInput('message-title', { required: false });
-    core.info(`message-color ${messageTitle}`);
+    core.info(`message-title ${messageTitle}`);
     const messageText = core.getInput('message-text', { required: false });
-    core.info(`message-color ${messageText}`);
+    core.info(`message-text ${messageText}`);
     const repoName = payload.repository?.name;
     core.info(`setting REPO_NAME: ${repoName}`);
     const branchName = context.ref.includes('/') ? context.ref.split('/').pop() ?? '' : '';
@@ -32530,7 +32530,6 @@ const run = async () => {
     const msg1 = {
         username: messageUsername || `${repoName} ${stage}`,
         avatar_url: 'https://i.imgur.com/4M34hi2.png',
-        content: 'i am a content',
         embeds: [
             {
                 author: {
