@@ -1,8 +1,8 @@
 import * as core from '@actions/core';
 import * as github from '@actions/github';
 import axios from 'axios';
-import hexToRgb from './helpers/hexToRgb';
 import handleError from './helpers/handleError';
+import hexToDecimal from './helpers/hexToDecimal';
 
 export const run = async () => {
   const { context } = github;
@@ -59,8 +59,6 @@ export const run = async () => {
 
   core.info(`setting SUCCESS_MESSAGE: The test, build and deploy succeeded! 🚀 Message: ${commitMessage}`);
 
-  core.info(`COLOR --> ${hexToRgb(messageColor)}`);
-
   const msg1 = {
     username: messageUsername || `${repoName} ${stage}`,
     avatar_url: messageIcon || 'https://avatars.githubusercontent.com/u/52255631?s=200&v=4',
@@ -71,7 +69,7 @@ export const run = async () => {
           url: `https://github.com/${context.actor}`,
           icon_url: actorInfo.data.avatar_url || 'https://avatars.githubusercontent.com/u/52255631?s=200&v=4',
         },
-        color: 15258703,
+        color: hexToDecimal(messageColor) || 3307709,
         fields: [
           {
             name: 'Actions URL',
