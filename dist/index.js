@@ -32528,7 +32528,7 @@ const run = async () => {
     core.info(`setting COMMIT_MESSAGE: ${commitMessage}`);
     core.info(`setting SUCCESS_MESSAGE: The test, build and deploy succeeded! 🚀 Message: ${commitMessage}`);
     const msg1 = {
-        username: messageUsername || `${repoName} ${branchName}`,
+        username: messageUsername || `${repoName} ${stage}`,
         avatar_url: 'https://i.imgur.com/4M34hi2.png',
         content: 'i am a content',
         embeds: [
