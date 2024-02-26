@@ -32536,7 +32536,7 @@ const run = async () => {
             {
                 author: {
                     name: context.actor,
-                    url: 'https://github.com/',
+                    url: 'https://github.com',
                     icon_url: 'https://i.imgur.com/R66g1Pe.jpg',
                 },
                 color: 15258703,
