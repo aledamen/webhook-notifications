@@ -32525,10 +32525,14 @@ const run = async () => {
     core.info(`message-icon ${messageIcon}`);
     const messageUsername = core.getInput('message-username', { required: false });
     core.info(`message-username ${messageUsername}`);
-    const messageTitle = core.getInput('message-title', { required: false });
-    core.info(`message-title ${messageTitle}`);
-    const messageText = core.getInput('message-text', { required: false });
-    core.info(`message-text ${messageText}`);
+    const messageActionTitle = core.getInput('message-action-title', { required: false });
+    core.info(`message-body-title ${messageActionTitle}`);
+    const messageActionName = core.getInput('message-action-name', { required: false });
+    core.info(`message-body-text ${messageActionName}`);
+    const messageBodyTitle = core.getInput('message-body-title', { required: false });
+    core.info(`message-body-title ${messageBodyTitle}`);
+    const messageBodyText = core.getInput('message-body-text', { required: false });
+    core.info(`message-body-text ${messageBodyText}`);
     // SETTING VARIABLES TO SEND MESSAGE
     const repoName = payload.repository?.name;
     core.info(`setting REPO_NAME: ${repoName}`);
@@ -32568,8 +32572,8 @@ const run = async () => {
                 color: (0, hexToDecimal_1.default)(messageColor) || 3307709,
                 fields: [
                     {
-                        name: 'Actions URL',
-                        value: '[hyperlink](https://github.com/',
+                        name: messageActionTitle || 'Actions URL',
+                        value: '[hyperlink](https://github.com/)',
                     },
                     {
                         name: 'Your message title for deploy should be here',

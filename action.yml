@@ -20,11 +20,19 @@ inputs:
     description: >
       Message's username.
     required: false
-  message-title:
+  message-action-title:
+    description: >
+      Message's action title.
+    required: false
+  message-action-name:
+    description: >
+      Message's action file name.
+    required: false
+  message-body-title:
     description: >
       Message's title.
     required: false
-  message-text:
+  message-body-text:
     description: >
       Message's text.
     required: false
