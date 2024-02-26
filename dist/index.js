@@ -32523,11 +32523,11 @@ const run = async () => {
     let actorInfo;
     try {
         actorInfo = await axios_1.default.get(`https://api.github.com/users/${context.actor}`);
-        core.info(`Success Actor ---> ${actorInfo.data.avatar_url}`);
+        core.info(`Success Actor Info ---> ${actorInfo.data.avatar_url}`);
     }
     catch (err) {
         const errorMsg = (0, handleError_1.default)(err);
-        core.info(`Error Actor ---> ${errorMsg}`);
+        core.info(`Error Actor Info---> ${errorMsg}`);
         throw new Error(errorMsg);
     }
     if (!('commits' in payload)) {
@@ -32546,8 +32546,8 @@ const run = async () => {
             {
                 author: {
                     name: context.actor,
-                    url: 'https://github.com',
-                    icon_url: 'https://i.imgur.com/R66g1Pe.jpg',
+                    url: `https://github.com/${context.actor}`,
+                    icon_url: actorInfo.data.avatar_url || 'https://avatars.githubusercontent.com/u/52255631?s=200&v=4',
                 },
                 color: 15258703,
                 fields: [

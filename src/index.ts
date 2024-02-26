@@ -36,10 +36,10 @@ export const run = async () => {
   let actorInfo;
   try {
     actorInfo = await axios.get(`https://api.github.com/users/${context.actor}`);
-    core.info(`Success Actor ---> ${actorInfo.data.avatar_url}`);
+    core.info(`Success Actor Info ---> ${actorInfo.data.avatar_url}`);
   } catch (err: any) {
     const errorMsg = handleError(err);
-    core.info(`Error Actor ---> ${errorMsg}`);
+    core.info(`Error Actor Info---> ${errorMsg}`);
     throw new Error(errorMsg);
   }
 
@@ -66,8 +66,8 @@ export const run = async () => {
       {
         author: {
           name: context.actor,
-          url: 'https://github.com',
-          icon_url: 'https://i.imgur.com/R66g1Pe.jpg',
+          url: `https://github.com/${context.actor}`,
+          icon_url: actorInfo.data.avatar_url || 'https://avatars.githubusercontent.com/u/52255631?s=200&v=4',
         },
         color: 15258703,
         fields: [
