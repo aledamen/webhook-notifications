@@ -32520,6 +32520,16 @@ const run = async () => {
     core.info(`setting BRANCH_NAME: ${branchName}`);
     const stage = (branchName.toUpperCase() === 'MAIN') ? 'PROD' : branchName.toUpperCase();
     core.info(`setting STAGE: ${stage}`);
+    let actorInfo;
+    try {
+        actorInfo = await axios_1.default.get(`https://api.github.com/users/${context.actor}`);
+        core.info(`Success ---> ${actorInfo.data}`);
+    }
+    catch (err) {
+        const errorMsg = (0, handleError_1.default)(err);
+        core.info(`Error ---> ${errorMsg}`);
+        throw new Error(errorMsg);
+    }
     if (!('commits' in payload)) {
         throw new Error('No commits found in payload, check the action initiator');
     }
@@ -32555,7 +32565,7 @@ const run = async () => {
     };
     try {
         const res = await axios_1.default.post(discordWebhook, msg1);
-        core.info(`Success ---> ${res.data}`);
+        core.info(`Success ---> ${res}`);
     }
     catch (err) {
         const errorMsg = (0, handleError_1.default)(err);

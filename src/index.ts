@@ -33,6 +33,16 @@ export const run = async () => {
   const stage = (branchName.toUpperCase() === 'MAIN') ? 'PROD' : branchName.toUpperCase();
   core.info(`setting STAGE: ${stage}`);
 
+  let actorInfo;
+  try {
+    actorInfo = await axios.get(`https://api.github.com/users/${context.actor}`);
+    core.info(`Success ---> ${actorInfo.data}`);
+  } catch (err: any) {
+    const errorMsg = handleError(err);
+    core.info(`Error ---> ${errorMsg}`);
+    throw new Error(errorMsg);
+  }
+
   if (!('commits' in payload)) {
     throw new Error('No commits found in payload, check the action initiator');
   }
@@ -76,7 +86,7 @@ export const run = async () => {
 
   try {
     const res = await axios.post(discordWebhook, msg1);
-    core.info(`Success ---> ${res.data}`);
+    core.info(`Success ---> ${res}`);
   } catch (err: any) {
     const errorMsg = handleError(err);
     core.info(`Error ---> ${errorMsg}`);
