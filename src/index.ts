@@ -2,6 +2,7 @@ import * as core from '@actions/core';
 import * as github from '@actions/github';
 import axios from 'axios';
 import hexToRgb from './helpers/hexToRgb';
+import handleError from './helpers/handleError';
 
 export const run = async () => {
   const { context } = github;
@@ -71,13 +72,9 @@ export const run = async () => {
     const res = await axios.post(discordWebhook, msg1);
     core.info(`Success ---> ${res.data}`);
   } catch (err: any) {
-    core.info(`Error ---> ${err}`);
-    core.info(`Error message ---> ${err.message}`);
-    core.info(`Error request ---> ${JSON.stringify(err.request)}`);
-    core.info(`Error response ---> ${JSON.stringify(err.response)}`);
-    core.info(`Error response.data ---> ${JSON.stringify(err.response.data)}`);
-    core.info(`Error response.data.error ---> ${err.response.data.error}`);
-    throw new Error(err.message);
+    const errorMsg = handleError(err);
+    core.info(`Error ---> ${errorMsg}`);
+    throw new Error(errorMsg);
   }
 };
 

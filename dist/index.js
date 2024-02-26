@@ -32428,6 +32428,41 @@ function wrappy (fn, cb) {
 
 /***/ }),
 
+/***/ 5498:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const axios_1 = __importDefault(__nccwpck_require__(5144));
+const handleError = (error) => {
+    // When Axios encounters an error during an HTTP request or response handling, it creates a specific Axios error object
+    if (axios_1.default.isAxiosError(error)) {
+        const apiError = error.response?.data;
+        if (typeof apiError === 'string' && apiError.length > 0) {
+            return apiError;
+        }
+        return apiError?.message || apiError?.error || error.message;
+    }
+    // Network errors
+    // timeout errors
+    // CORS errors
+    if (error instanceof Error) {
+        return error.message;
+    }
+    if (error && typeof error === 'object' && 'message' in error && typeof error.message === 'string') {
+        return error.message;
+    }
+    return 'Generic error message';
+};
+exports["default"] = handleError;
+
+
+/***/ }),
+
 /***/ 9861:
 /***/ ((__unused_webpack_module, exports) => {
 
@@ -32483,6 +32518,7 @@ const core = __importStar(__nccwpck_require__(4385));
 const github = __importStar(__nccwpck_require__(4293));
 const axios_1 = __importDefault(__nccwpck_require__(5144));
 const hexToRgb_1 = __importDefault(__nccwpck_require__(9861));
+const handleError_1 = __importDefault(__nccwpck_require__(5498));
 const run = async () => {
     const { context } = github;
     const { payload } = context;
@@ -32539,13 +32575,9 @@ const run = async () => {
         core.info(`Success ---> ${res.data}`);
     }
     catch (err) {
-        core.info(`Error ---> ${err}`);
-        core.info(`Error message ---> ${err.message}`);
-        core.info(`Error request ---> ${JSON.stringify(err.request)}`);
-        core.info(`Error response ---> ${JSON.stringify(err.response)}`);
-        core.info(`Error response.data ---> ${JSON.stringify(err.response.data)}`);
-        core.info(`Error response.data.error ---> ${err.response.data.error}`);
-        throw new Error(err.message);
+        const errorMsg = (0, handleError_1.default)(err);
+        core.info(`Error ---> ${errorMsg}`);
+        throw new Error(errorMsg);
     }
 };
 exports.run = run;
